@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Welcome to My Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi there! I'm **Daniel Gomez**, a passionate web and mobile app developer. This repository contains my personal portfolio, where I showcase the projects I've worked on, my skills, and my experience.
 
-## Available Scripts
+You can check out my portfolio here: [My Portfolio](https://portafolio-85235.web.app/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 About Me
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I'm a developer who loves to create innovative and efficient solutions. With experience in both frontend and backend development, I strive to build websites and apps that provide great user experiences.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 💼 Projects
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here are some of the projects I've worked on:
 
-### `npm run build`
+### Project 1: [Portfolio Website](https://portafolio-85235.web.app/)
+- **Description**: My personal portfolio website where I showcase all my projects and skills.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Project 2: [BrightMind](https://brightmind.mesadoko.com/)
+- **Description**: An educational platform designed for effective learning. I participated in the creation of this platform, working on both the frontend and backend, and performing tests to ensure its quality and performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Project 3: [Auth Biometric](https://github.com/danielpg10/flutter_auth_biometric)
+- **Description**: A biometric authentication system developed with Flutter. This system allows user authentication through fingerprint or facial recognition, ensuring a high level of security for mobile applications.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 📞 Contact Me
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Feel free to reach out for collaboration or job opportunities!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Email**: [danielpg2020md@gmail.com](mailto:danielpg2020md@gmail.com)
+- **LinkedIn**: [Marlon Daniel](https://www.linkedin.com/in/marlon-daniel-portuguez-gomez-65271231a/)
+- **GitHub**: [danielpg10](https://github.com/danielpg10)
+- **WhatsApp**: [Send me a message](https://wa.me/573229264366)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks for checking out my portfolio. Let's build something great together! 🚀
