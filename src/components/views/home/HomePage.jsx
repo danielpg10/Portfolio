@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Cursor from '../../utils/Cursor';
+import Cursor from '../../utils/ui/Cursor';
 import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import avatar from '../../../assets/img/avatar - 01.png';
 import { Tooltip } from '../../utils/ui/tootip';
 import HamburgerMenu from '../../HamburgerMenu';
+import AboutMe from './AboutMe';
+/* import Skills from './Skills'; */
+import WaveDivider from '../../utils/ui/WaveDivider';
 
 const waveAnimation = {
   animate: {
@@ -38,10 +41,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col relative overflow-hidden font-['Archivo_Black']">
+    <div className="bg-black font-['Archivo_Black']">
       {!isMobile && <Cursor />}
 
-      <header className="w-full p-4 flex justify-between items-center">
+      <header className="w-full p-4 flex justify-between items-center fixed top-0 left-0 z-50 bg-black bg-opacity-50">
         <div className="flex items-center">
           <img 
             src={avatar} 
@@ -91,7 +94,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-black w-full absolute top-16 left-0 z-50"
+            className="lg:hidden bg-black w-full fixed top-16 left-0 z-40"
           >
             <nav className="p-4">
               <ul className="flex flex-col space-y-4">
@@ -118,7 +121,7 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
-      <main className="flex-grow flex flex-col justify-center items-center p-4 relative z-10 text-center">
+      <main className="min-h-screen flex flex-col justify-center items-center p-4 relative z-10 text-center">
         <motion.p 
           className="text-white text-3xl mb-4 font-bold"
           initial={{ opacity: 0, y: 20 }} 
@@ -148,7 +151,7 @@ export default function HomePage() {
           Marlon Daniel Portuguez Gomez
         </motion.h1>
         <motion.p 
-          className="text-white text-xl md:text-2xl font-bold mt-4"
+          className="text-white text-xl md:text-2xl font-bold mt-4 font-['Fira_Sans']"
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -163,7 +166,12 @@ export default function HomePage() {
         >
           frontend y backend
         </motion.p>
+        <WaveDivider />
       </main>
+      <div className="bg-gray-900">
+        <AboutMe />
+     {/*    <Skills /> */}
+      </div>
     </div>
   );
 }

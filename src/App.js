@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    document.title = "Marlon Daniel Portuguez Gomez | Desarrollador Web";
+    document.title = "Marlon Daniel Portuguez Gomez";
   }, []);
 
   return (
