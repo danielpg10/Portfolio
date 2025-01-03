@@ -29,5 +29,9 @@
         "collaboration": "Collaboration",
         "collaborationDesc": "Teamwork",
         "collaborationDesc2": "Experience in agile methodologies and remote collaboration."
+    },
+    "skills": {
+        "skillsTitle": "My skills",
+        "des": "These are the technologies and tools I regularly work with to create innovative and efficient solutions."
     }
 }

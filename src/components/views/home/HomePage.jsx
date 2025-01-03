@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
 import Cursor from '../../utils/ui/Cursor';
 import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import avatar from '../../../assets/img/avatar - 01.png';
 import { Tooltip } from '../../utils/ui/Tootip';
 import HamburgerMenu from '../../HamburgerMenu';
 import AboutMe from './AboutMe';
+import Skills from './Skills';
 import WaveDivider from '../../utils/ui/WaveDivider';
 import { useTranslation } from 'react-i18next';
 import LoadingAnimation from '../../utils/ui/LoadingAnimation';
+import ParticleBackground from '../../utils/ui/Particles';
+import LanguageSwitcher from '../../utils/ui/SwitchLan';
 
 const waveAnimation = {
   animate: {
@@ -56,11 +60,20 @@ export default function HomePage() {
 
   return (
     <motion.div 
-      className="bg-black font-['Archivo_Black']"
+      className="bg-black font-['Archivo_Black'] relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      <div className="absolute inset-0 z-0">
+        <Canvas
+          camera={{ position: [0, 0, 5], fov: 75 }}
+          style={{ background: 'transparent' }}
+        >
+          <ParticleBackground />
+        </Canvas>
+      </div>
+
       {!isMobile && <Cursor />}
 
       <header className="w-full p-4 flex justify-between items-center fixed top-0 left-0 z-50 bg-black bg-opacity-50">
@@ -187,9 +200,11 @@ export default function HomePage() {
         </motion.p>
         <WaveDivider />
       </main>
-      <div className="bg-gray-900">
+      <div className="bg-gray-900 relative z-20">
         <AboutMe />
+        <Skills />
       </div>
+      <LanguageSwitcher />
     </motion.div>
   );
 }

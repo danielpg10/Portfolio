@@ -1,51 +1,85 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Fondo from '../../../assets/img/fondo.avif';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt } from 'react-icons/fa';
+import { SiJavascript, SiFlutter, SiPostgresql, SiMongodb, SiJquery, SiExpress, SiDjango, SiSpring, SiMysql, SiFirebase, SiTypescript, SiFlask, SiTailwindcss, SiFastapi, SiLaravel } from 'react-icons/si';
+import { TbBrandReactNative } from 'react-icons/tb';
+import { DiDart, DiPhp } from 'react-icons/di';
+import { TbSql } from 'react-icons/tb';
+import SkillsSphere from '../../utils/ui/SkillsSphere';
+import ParticleBackground from '../../utils/ui/Particles';
+import { useTranslation } from 'react-i18next';
+
+const skills = [
+  { name: "React", icon: FaReact, color: "#61DAFB" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+  { name: "React Native", icon: TbBrandReactNative, color: "#61DAFB" },
+  { name: "Python", icon: FaPython, color: "#3776AB" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "jQuery", icon: SiJquery, color: "#0769AD" },
+  { name: "SQL", icon: TbSql, color: "#4479A1" },
+  { name: "Git", icon: FaGitAlt, color: "#F05032" },
+  { name: "NodeJS", icon: FaNodeJs, color: "#339933" },
+  { name: "PHP", icon: DiPhp, color: "#777BB4" },
+  { name: "Express", icon: SiExpress, color: "#000000" },
+  { name: "Django", icon: SiDjango, color: "#092E20" },
+  { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+  { name: "Spring Boot", icon: SiSpring, color: "#6DB33F" },
+  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "Flask", icon: SiFlask, color: "#000000" },
+  { name: "Dart", icon: DiDart, color: "#0175C2" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "FastAPI", icon: SiFastapi, color: "#009688" }
+]
+
 
 export default function Skills() {
+  const { t } = useTranslation('global');  
+
   return (
-    <section id="skills" className="min-h-screen bg-black flex flex-col justify-center items-center p-4 relative z-10">
-      <div 
-        className="rounded-3xl w-full max-w-8xl mx-auto p-8 min-h-[83vh] flex relative overflow-hidden"
-        style={{
-          backgroundImage: `url(${Fondo})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-white opacity-90"></div>
-        <div className="w-1/2 pr-8 relative z-10">
-          <motion.h2 
-            className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 text-black text-left font-fira-sans"
-            initial={{ opacity: 0, y: -50 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 1 }}
-          >
-            Habilidades
-          </motion.h2>
-          <motion.p 
-            className="text-black text-lg md:text-xl font-fira-sans font-normal"
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Soy Marlon Daniel Portuguez Gomez, un apasionado desarrollador web y de aplicaciones móviles con experiencia en tecnologías frontend y backend. Me encanta crear experiencias digitales intuitivas, funcionales y visualmente atractivas. Siempre estoy en búsqueda de nuevos desafíos que me permitan aprender y crecer profesionalmente.
-          </motion.p>
+    <section id="skills" className="min-h-screen bg-black py-16 px-4 md:px-8 lg:px-12 flex items-center justify-center overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
+        <motion.div 
+          className="w-full lg:w-1/2 mb-12 lg:mb-0"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-left text-white leading-tight">
+         <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">{t('skills.skillsTitle')}</span>
+          </h2>
+          <p className="text-base md:text-lg text-left font-fira-sans font-normal text-gray-300 mb-8 leading-relaxed">
+          {t('skills.des')}
+          </p>
+        </motion.div>
 
-          <motion.p 
-            className="text-black text-lg md:text-xl font-fira-sans font-normal"
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            ¡Construyamos algo increíble juntos!
-          </motion.p>
-        </div>
-        <div className="w-1/2 relative z-10">
-
-
-
-        </div>
+        <div className="absolute inset-0 z-0">
+        <Canvas
+          camera={{ position: [0, 0, 5], fov: 75 }}
+          style={{ background: 'transparent' }}
+        >
+          <ParticleBackground />
+        </Canvas>
+      </div>
+        <motion.div 
+          className="w-full lg:w-1/2 h-[300px] md:h-[400px] lg:h-[500px]"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Canvas camera={{ position: [0, 0, 8], fov: 75 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} />
+            <SkillsSphere skills={skills} />
+            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+          </Canvas>
+        </motion.div>
       </div>
     </section>
   );

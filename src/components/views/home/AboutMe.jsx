@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, GraduationCap, Rocket, Code, Trophy, Users, ChevronDown, ThumbsUp } from 'lucide-react';
+import { Briefcase, GraduationCap, Rocket, Code, ThumbsUp, Users, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const cardVariants = {
@@ -16,14 +16,15 @@ const cardVariants = {
   }),
   hover: {
     scale: 1.05,
+    boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.5)",
     transition: {
-      duration: 0.2
+      duration: 0.3
     }
   }
 };
 
 const iconComponents = {
-  Briefcase, GraduationCap, Rocket, Code, Trophy, Users, ThumbsUp 
+  Briefcase, GraduationCap, Rocket, Code, ThumbsUp, Users
 };
 
 const AboutMe = () => {
@@ -36,42 +37,54 @@ const AboutMe = () => {
       title: t('aboutMe.developer'),
       content: t('aboutMe.experienceDesc'),
       icon: "Briefcase",
-      color: "from-blue-400 to-blue-600"
+      color: "bg-gradient-to-br from-blue-500 to-blue-700",
+      textColor: "text-blue-100",
+      shadowColor: "shadow-blue-500/50"
     },
     {
       keyword: t('aboutMe.education'),
       title: t('aboutMe.educationDesc'),
       content: t('aboutMe.educationInstitution'),
       icon: "GraduationCap",
-      color: "from-green-400 to-green-600"
+      color: "bg-gradient-to-br from-green-500 to-green-700",
+      textColor: "text-green-100",
+      shadowColor: "shadow-green-500/50"
     },
     {
       keyword: t('aboutMe.passion'),
       title: t('aboutMe.passionDesc'),
       content: t('aboutMe.passionDesc2'),
       icon: "Rocket",
-      color: "from-purple-400 to-purple-600"
+      color: "bg-gradient-to-br from-purple-500 to-purple-700",
+      textColor: "text-purple-100",
+      shadowColor: "shadow-purple-500/50"
     },
     {
       keyword: t('aboutMe.skills'),
       title: t('aboutMe.skillsDesc'),
       content: t('aboutMe.skillsDesc2'),
       icon: "Code",
-      color: "from-red-400 to-red-600"
+      color: "bg-gradient-to-br from-red-500 to-red-700",
+      textColor: "text-red-100",
+      shadowColor: "shadow-red-500/50"
     },
     {
       keyword: t('aboutMe.adaptability'),
       title: t('aboutMe.adaptabilityDesc'),
       content: t('aboutMe.adaptabilityDesc2'),
       icon: "ThumbsUp",
-      color: "from-yellow-400 to-yellow-600"
+      color: "bg-gradient-to-br from-yellow-500 to-yellow-700",
+      textColor: "text-yellow-100",
+      shadowColor: "shadow-yellow-500/50"
     },
     {
       keyword: t('aboutMe.collaboration'),
       title: t('aboutMe.collaborationDesc'),
       content: t('aboutMe.collaborationDesc2'),
       icon: "Users",
-      color: "from-indigo-400 to-indigo-600"
+      color: "bg-gradient-to-br from-indigo-500 to-indigo-700",
+      textColor: "text-indigo-100",
+      shadowColor: "shadow-indigo-500/50"
     }
   ];
 
@@ -104,7 +117,7 @@ const AboutMe = () => {
             return (
               <motion.div
                 key={index}
-                className="relative bg-gray-800 rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                className={`relative ${card.color} rounded-xl overflow-hidden cursor-pointer ${card.shadowColor} transition-all duration-300 ease-in-out`}
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
@@ -112,26 +125,31 @@ const AboutMe = () => {
                 custom={index}
                 onClick={() => setActiveCard(activeCard === index ? null : index)}
               >
-                <div className={`p-6 relative bg-gradient-to-br ${card.color} bg-opacity-10 h-full`}>
-                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${card.color} rounded-bl-full opacity-20`}></div>
-                  <IconComponent className={`text-4xl mb-4 ${card.color.split(' ')[1]}`} size={40} />
-                  <h3 className={`text-xl font-bold mb-2 bg-gradient-to-r ${card.color} text-transparent bg-clip-text`}>
+                <div className="p-6 relative h-full backdrop-blur-sm bg-opacity-80">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-white rounded-bl-full opacity-10"></div>
+                  <IconComponent className={`text-4xl mb-4 ${card.textColor}`} size={40} />
+                  <h3 className={`text-2xl font-bold mb-2 ${card.textColor}`}>
                     {card.keyword}
                   </h3>
-                  <div className={`w-16 h-1 bg-gradient-to-r ${card.color} mb-4`}></div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-200">{card.title}</h4>
-                  <ChevronDown className={`absolute bottom-2 right-2 transition-transform duration-300 ${activeCard === index ? 'rotate-180' : ''}`} />
+                  <h4 className={`text-lg font-semibold mb-4 ${card.textColor} opacity-90`}>{card.title}</h4>
+                  <motion.div
+                    className={`absolute bottom-2 right-2 ${card.textColor} bg-white bg-opacity-20 rounded-full p-1`}
+                    animate={{ rotate: activeCard === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronDown size={20} />
+                  </motion.div>
                 </div>
                 <AnimatePresence>
                   {activeCard === index && (
                     <motion.div
-                      className="absolute inset-0 bg-gray-900 bg-opacity-95 flex items-center justify-center p-6"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
+                      className={`absolute inset-0 ${card.color} bg-opacity-95 flex items-center justify-center p-6 backdrop-blur-md`}
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 50 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <p className="text-gray-300 font-fira-sans text-center">{card.content}</p>
+                      <p className={`${card.textColor} font-fira-sans text-center text-lg`}>{card.content}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

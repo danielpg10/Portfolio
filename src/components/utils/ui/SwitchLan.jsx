@@ -24,7 +24,7 @@ const LanguageSwitcher = () => {
 
   return (
     <motion.div
-      className="fixed bottom-4 right-4 flex items-center bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-lg border border-gray-300 dark:border-gray-600 z-10"
+      className="fixed bottom-4 right-4 flex items-center bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-lg border border-gray-300 dark:border-gray-600 z-50"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
