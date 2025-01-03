@@ -1,0 +1,32 @@
+{
+    "homePage": {
+        "aboutMe": "Sobre mi",
+        "skills": "Habilidades",
+        "contact": "Contacto",
+        "hi": "Hola",
+        "name": ", mi nombre es",
+        "des": "Soy desarrollador web y de aplicaciones móviles",
+        "crip": "frontend y backend"
+    },
+    "aboutMe": {
+        "des": "Soy un desarrollador web y móvil apasionado por crear experiencias digitales excepcionales. Mi enfoque se centra en combinar un diseño atractivo con una funcionalidad robusta para ofrecer soluciones que no solo cumplen, sino que superan las expectativas del cliente.",
+        "developer": "Desarrollador Full-Stack",
+        "experience": "Experiencia",
+        "experienceDesc": "Más de 3 años de experiencia desarrollando aplicaciones web y móviles innovadoras.",
+        "education": "Educación",
+        "educationDesc": "Tecnólogo en Análisis y Desarrollo de Software",
+        "educationInstitution": "SENA - Servicio Nacional de Aprendizaje",
+        "passion": "Pasión",
+        "passionDesc": "Innovación Tecnológica",
+        "passionDesc2": "Creando soluciones que impactan positivamente en la vida de las personas.",
+        "skills": "Habilidades",
+        "skillsDesc": "Dominio Tecnológico",
+        "skillsDesc2": "Manejo en React, Node.js y desarrollo móvil con React Native.",
+        "adaptability": "Adaptabilidad",
+        "adaptabilityDesc": "Soluciones Flexibles",
+        "adaptabilityDesc2": "Adaptabilidad a diferentes entornos y desafíos, brindando soluciones que evolucionan con las necesidades del proyecto.",
+        "collaboration": "Colaboración",
+        "collaborationDesc": "Trabajo en Equipo",
+        "collaborationDesc2": "Experiencia en metodologías ágiles y colaboración remota."
+    }
+}

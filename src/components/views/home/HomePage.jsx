@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Cursor from '../../utils/ui/Cursor';
 import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import avatar from '../../../assets/img/avatar - 01.png';
-import { Tooltip } from '../../utils/ui/tootip';
+import { Tooltip } from '../../utils/ui/Tootip';
 import HamburgerMenu from '../../HamburgerMenu';
 import AboutMe from './AboutMe';
-/* import Skills from './Skills'; */
 import WaveDivider from '../../utils/ui/WaveDivider';
+import { useTranslation } from 'react-i18next';
+import LoadingAnimation from '../../utils/ui/LoadingAnimation';
 
 const waveAnimation = {
   animate: {
@@ -24,6 +25,8 @@ const waveAnimation = {
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation('global');
 
   useEffect(() => {
     const checkMobile = () => {
@@ -33,15 +36,31 @@ export default function HomePage() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearTimeout(timer);
+    };
   }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  if (isLoading) {
+    return <LoadingAnimation />;
+  }
+
   return (
-    <div className="bg-black font-['Archivo_Black']">
+    <motion.div 
+      className="bg-black font-['Archivo_Black']"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       {!isMobile && <Cursor />}
 
       <header className="w-full p-4 flex justify-between items-center fixed top-0 left-0 z-50 bg-black bg-opacity-50">
@@ -56,9 +75,9 @@ export default function HomePage() {
         
         <nav className="hidden lg:block">
           <ul className="flex space-x-4">
-            <li><a href="#about" className="text-white hover:text-blue-500">Sobre mi</a></li>
-            <li><a href="#skills" className="text-white hover:text-blue-500">Habilidades</a></li>
-            <li><a href="#contact" className="text-white hover:text-blue-500">Contacto</a></li>
+            <li><a href="#about" className="text-white hover:text-blue-500">{t('homePage.aboutMe')}</a></li>
+            <li><a href="#skills" className="text-white hover:text-blue-500">{t('homePage.skills')}</a></li>
+            <li><a href="#contact" className="text-white hover:text-blue-500">{t('homePage.contact')}</a></li>
           </ul>
         </nav>
         
@@ -98,9 +117,9 @@ export default function HomePage() {
           >
             <nav className="p-4">
               <ul className="flex flex-col space-y-4">
-                <li><a href="#about" className="text-white hover:text-blue-500" onClick={toggleMenu}>Sobre mi</a></li>
-                <li><a href="#skills" className="text-white hover:text-blue-500" onClick={toggleMenu}>Habilidades</a></li>
-                <li><a href="#contact" className="text-white hover:text-blue-500" onClick={toggleMenu}>Contacto</a></li>
+                <li><a href="#about" className="text-white hover:text-blue-500" onClick={toggleMenu}>{t('homePage.aboutMe')}</a></li>
+                <li><a href="#skills" className="text-white hover:text-blue-500" onClick={toggleMenu}>{t('homePage.skills')}</a></li>
+                <li><a href="#contact" className="text-white hover:text-blue-500" onClick={toggleMenu}>{t('homePage.contact')}</a></li>
               </ul>
             </nav>
             <div className="flex justify-center space-x-4 p-4">
@@ -128,7 +147,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8 }}
         >
-          Hola{' '}
+          {t('homePage.hi')}{' '}
           <motion.span
             className="inline-block"
             animate="animate"
@@ -136,7 +155,7 @@ export default function HomePage() {
           >
             👋🏻
           </motion.span>
-          , mi nombre es
+          {t('homePage.name')}
         </motion.p>
         <motion.h1 
           className="outline-text text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-transparent hover:text-[#99b5e1] transition-colors duration-300"
@@ -156,7 +175,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Soy desarrollador web y de aplicaciones móviles
+          {t('homePage.des')}
         </motion.p>
         <motion.p 
           className="text-white text-xl md:text-2xl font-bold"
@@ -164,14 +183,13 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          frontend y backend
+          {t('homePage.crip')}
         </motion.p>
         <WaveDivider />
       </main>
       <div className="bg-gray-900">
         <AboutMe />
-     {/*    <Skills /> */}
       </div>
-    </div>
+    </motion.div>
   );
 }

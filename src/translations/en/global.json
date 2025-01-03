@@ -1,0 +1,33 @@
+{
+    "homePage": {
+        "aboutMe": "About me",
+        "skills": "Skills",
+        "contact": "Contact",
+        "hi": "Hello",
+        "name": ", my name is",
+        "des": "I am a web and mobile applications developer",
+        "crip": "frontend and backend"
+    },
+    "aboutMe": {
+        "des": "I am a web and mobile developer passionate about creating exceptional digital experiences. My focus is on combining attractive design with robust functionality to deliver solutions that not only meet, but exceed customer expectations.",
+        "developer": "Full-Stack Developer",
+
+        "experience": "Experience",
+        "experienceDesc": "Over 3 years of experience developing innovative web and mobile applications.",
+        "education": "Education",
+        "educationDesc": "Technologist in Software Analysis and Development",
+        "educationInstitution": "SENA - National Learning Service",
+        "passion": "Passion",
+        "passionDesc": "Technological Innovation",
+        "passionDesc2": "Creating solutions that positively impact people's lives.",
+        "skills": "Skills",
+        "skillsDesc": "Technological Expertise",
+        "skillsDesc2": "Proficiency in React, Node.js, and mobile development with React Native.",
+        "adaptability": "Adaptability",
+        "adaptabilityDesc": "Flexible Solutions",
+        "adaptabilityDesc2": "Adaptability to different environments and challenges, providing solutions that evolve with the project's needs.",
+        "collaboration": "Collaboration",
+        "collaborationDesc": "Teamwork",
+        "collaborationDesc2": "Experience in agile methodologies and remote collaboration."
+    }
+}
