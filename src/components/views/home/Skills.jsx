@@ -8,7 +8,6 @@ import { TbBrandReactNative } from 'react-icons/tb';
 import { DiDart, DiPhp } from 'react-icons/di';
 import { TbSql } from 'react-icons/tb';
 import SkillsSphere from '../../utils/ui/SkillsSphere';
-import ParticleBackground from '../../utils/ui/Particles';
 import { useTranslation } from 'react-i18next';
 
 const skills = [
@@ -36,37 +35,27 @@ const skills = [
   { name: "Dart", icon: DiDart, color: "#0175C2" },
   { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
   { name: "FastAPI", icon: SiFastapi, color: "#009688" }
-]
-
+];
 
 export default function Skills() {
   const { t } = useTranslation('global');  
 
   return (
-    <section id="skills" className="min-h-screen bg-black py-16 px-4 md:px-8 lg:px-12 flex items-center justify-center overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
+    <section id="skills" className="min-h-screen bg-black py-16 px-2 sm:px-4 md:px-8 lg:px-12 flex items-center justify-center overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0">
         <motion.div 
-          className="w-full lg:w-1/2 mb-12 lg:mb-0"
+          className="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left px-2 sm:px-4 md:px-6 lg:px-8"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-left text-white leading-tight">
-         <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">{t('skills.skillsTitle')}</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">{t('skills.skillsTitle')}</span>
           </h2>
-          <p className="text-base md:text-lg text-left font-fira-sans font-normal text-gray-300 mb-8 leading-relaxed">
-          {t('skills.des')}
+          <p className="text-base md:text-lg font-fira-sans font-normal text-gray-300 mb-8 leading-relaxed max-w-[300px] sm:max-w-[400px] md:max-w-xl mx-auto lg:mx-0 break-words whitespace-pre-wrap">
+            {t('skills.des')}
           </p>
         </motion.div>
-
-        <div className="absolute inset-0 z-0">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 75 }}
-          style={{ background: 'transparent' }}
-        >
-          <ParticleBackground />
-        </Canvas>
-      </div>
         <motion.div 
           className="w-full lg:w-1/2 h-[300px] md:h-[400px] lg:h-[500px]"
           initial={{ opacity: 0, scale: 0.8 }}
