@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaGlobeAmericas, FaGlobeEurope } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isEnglish, setIsEnglish] = useState(i18n.language === 'en');
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
       setIsEnglish(savedLanguage === 'en');
+    }
+
+    // Show notification if it's the user's first visit
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+      setShowNotification(true);
+      localStorage.setItem('hasVisited', 'true');
     }
   }, [i18n]);
 
@@ -20,40 +27,41 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(newLang);
     setIsEnglish(!isEnglish);
     localStorage.setItem('language', newLang);
+    setShowNotification(false);
   };
 
   return (
-    <motion.div
-      className="fixed bottom-4 right-4 flex items-center bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-lg border border-gray-300 dark:border-gray-600 z-50"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="flex items-center space-x-2">
-        <span className="text-gray-700 dark:text-gray-300 font-medium text-xs">
-          {isEnglish ? 'EN' : 'ES'}
-        </span>
-        <label className="relative inline-flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            checked={isEnglish}
-            onChange={handleToggle}
-            className="sr-only peer"
-          />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-            <motion.div
-              className="absolute inset-0 flex items-center justify-between px-1"
-              initial={false}
-              animate={{ opacity: isEnglish ? 1 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <FaGlobeEurope className="text-white" size={14} />
-              <FaGlobeAmericas className="text-white" size={14} />
-            </motion.div>
-          </div>
-        </label>
-      </div>
-    </motion.div>
+    <>
+      <motion.button
+        onClick={handleToggle}
+        className="fixed bottom-[50px] right-4 flex items-center justify-center w-8 h-8 bg-black text-white rounded-full shadow-lg border-2 border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110 z-[9998]"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <span className="sr-only">{t('languageSwitcher.switchLanguage')}</span>
+        <div className="relative w-full h-full flex items-center justify-center">
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center font-semibold text-xs"
+            initial={false}
+            animate={{ opacity: isEnglish ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            EN
+          </motion.div>
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center font-semibold text-xs"
+            initial={false}
+            animate={{ opacity: isEnglish ? 0 : 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            ES
+          </motion.div>
+        </div>
+      </motion.button>
+    </>
   );
 };
 

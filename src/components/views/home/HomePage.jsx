@@ -8,6 +8,7 @@ import { Tooltip } from '../../utils/ui/Tootip';
 import HamburgerMenu from '../../HamburgerMenu';
 import AboutMe from './AboutMe';
 import Skills from './Skills';
+import Footer from './footer';
 import WaveDivider from '../../utils/ui/WaveDivider';
 import { useTranslation } from 'react-i18next';
 import LoadingAnimation from '../../utils/ui/LoadingAnimation';
@@ -203,6 +204,7 @@ export default function HomePage() {
       <div className="bg-gray-900 relative z-20">
         <AboutMe />
         <Skills />
+        <Footer />
       </div>
       <LanguageSwitcher />
     </motion.div>

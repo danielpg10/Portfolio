@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt } from 'react-icons/fa';
-import { SiJavascript, SiFlutter, SiPostgresql, SiMongodb, SiJquery, SiExpress, SiDjango, SiSpring, SiMysql, SiFirebase, SiTypescript, SiFlask, SiTailwindcss, SiFastapi, SiLaravel } from 'react-icons/si';
+import { SiJavascript, SiFlutter, SiPostgresql, SiMongodb, SiJquery, SiExpress, SiDjango, SiSpring, SiMysql, SiFirebase, SiTypescript, SiFlask, SiTailwindcss, SiFastapi, SiLaravel, SiDotnet } from 'react-icons/si';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { DiDart, DiPhp } from 'react-icons/di';
 import { TbSql } from 'react-icons/tb';
@@ -34,15 +34,17 @@ const skills = [
   { name: "Flask", icon: SiFlask, color: "#000000" },
   { name: "Dart", icon: DiDart, color: "#0175C2" },
   { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "FastAPI", icon: SiFastapi, color: "#009688" }
+  { name: "FastAPI", icon: SiFastapi, color: "#009688" },
+  { name: ".NET", icon: SiDotnet, color: "#512BD4" },
+  { name: "ASP.NET", icon: SiDotnet, color: "#512BD4" },
 ];
 
 export default function Skills() {
   const { t } = useTranslation('global');  
 
   return (
-    <section id="skills" className="min-h-screen bg-black py-16 px-2 sm:px-4 md:px-8 lg:px-12 flex items-center justify-center overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0">
+    <section id="skills" className="min-h-screen bg-black py-16 px-2 sm:px-4 md:px-8 lg:px-12 flex items-center justify-center overflow-hidden relative z-0">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 relative z-10">
         <motion.div 
           className="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left px-2 sm:px-4 md:px-6 lg:px-8"
           initial={{ opacity: 0, x: -50 }}
