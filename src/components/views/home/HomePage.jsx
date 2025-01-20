@@ -8,6 +8,7 @@ import { Tooltip } from '../../utils/ui/Tootip';
 import HamburgerMenu from '../../HamburgerMenu';
 import AboutMe from './AboutMe';
 import Skills from './Skills';
+import Contact from './Contact';
 import Footer from './footer';
 import WaveDivider from '../../utils/ui/WaveDivider';
 import { useTranslation } from 'react-i18next';
@@ -204,6 +205,7 @@ export default function HomePage() {
       <div className="bg-gray-900 relative z-20">
         <AboutMe />
         <Skills />
+        <Contact />
         <Footer />
       </div>
       <LanguageSwitcher />
