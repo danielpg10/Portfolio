@@ -51,10 +51,10 @@ export default function Skills() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">{t('skills.skillsTitle')}</span>
           </h2>
-          <p className="text-base md:text-lg font-fira-sans font-normal text-gray-300 mb-8 leading-relaxed max-w-[300px] sm:max-w-[400px] md:max-w-xl mx-auto lg:mx-0 break-words whitespace-pre-wrap">
+          <p className="text-lg md:text-xl font-fira-sans font-normal text-gray-300 mb-4 leading-relaxed max-w-[300px] sm:max-w-[400px] md:max-w-xl mx-auto lg:mx-0 break-words whitespace-pre-wrap">
             {t('skills.des')}
           </p>
         </motion.div>

@@ -8,6 +8,7 @@
         "des": "Soy desarrollador web y de aplicaciones móviles",
         "crip": "frontend y backend"
     },
+
     "aboutMe": {
         "des": "Soy un desarrollador web y móvil apasionado por crear experiencias digitales excepcionales. Mi enfoque se centra en combinar un diseño atractivo con una funcionalidad robusta para ofrecer soluciones que no solo cumplen, sino que superan las expectativas del cliente.",
         "developer": "Desarrollador Full-Stack",
@@ -29,8 +30,35 @@
         "collaborationDesc": "Trabajo en Equipo",
         "collaborationDesc2": "Experiencia en metodologías ágiles y colaboración remota."
     },
+
     "skills": {
         "skillsTitle": "Mis habilidades",
         "des": "Estas son las tecnologías y herramientas con las que trabajo habitualmente para crear soluciones innovadoras y eficientes."
+    },
+
+    "contact": {
+        "title": "Contáctame",
+        "des": "Estoy aquí para convertir tus visiones en realidad digital. Con experiencia en desarrollo de software y un enfoque creativo, estoy listo para enfrentar nuevos desafíos y crear soluciones impactantes.",
+        "crip": "¡Conectemos y hagamos algo extraordinario juntos!",
+        "edu": "Tecnólogo en Análisis y Desarrollo de Software"
+    },
+
+    "questions": {
+        "ques1": "¿Quieres dar un giro tecnológico a tu negocio?",
+        "ques2": "¿Estás buscando un cambio tecnológico?",
+        "ques3": "¿Quieres llevar tu proyecto al siguiente nivel?",
+        "ques4": "¿Necesitas soluciones tecnológicas creativas?",
+        "ques5": "¿Estás listo para transformar tu visión en realidad?",
+        "ques6": "¿Estás listo para innovar con tecnología?",
+        "ques7": "¿Estás listo para digitalizar tu negocio?"
+    },
+
+    "footer": {
+        "des": "De la imaginación a la pantalla, transformando ideas en soluciones digitales que marcan la diferencia.",
+        "dev": "Desarrollador Full Stack",
+        "links": "Enlaces rápidos",
+        "pro": "Proyectos",
+        "skills": "Habilidades",
+        "aboutMe": "Sobre mí"
     }
 }

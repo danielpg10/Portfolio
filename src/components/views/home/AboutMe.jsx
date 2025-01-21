@@ -93,7 +93,7 @@ const AboutMe = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
         <div className="w-full lg:w-[30%] mb-12 lg:mb-0 order-first lg:order-last lg:pl-8">
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-center lg:text-right bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-center lg:text-right bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

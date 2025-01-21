@@ -8,10 +8,10 @@
         "des": "I am a web and mobile applications developer",
         "crip": "frontend and backend"
     },
+
     "aboutMe": {
         "des": "I am a web and mobile developer passionate about creating exceptional digital experiences. My focus is on combining attractive design with robust functionality to deliver solutions that not only meet, but exceed customer expectations.",
         "developer": "Full-Stack Developer",
-
         "experience": "Experience",
         "experienceDesc": "Over 3 years of experience developing innovative web and mobile applications.",
         "education": "Education",
@@ -30,8 +30,35 @@
         "collaborationDesc": "Teamwork",
         "collaborationDesc2": "Experience in agile methodologies and remote collaboration."
     },
+
     "skills": {
         "skillsTitle": "My skills",
         "des": "These are the technologies and tools I regularly work with to create innovative and efficient solutions."
-    }
+    },
+
+    "contact": {
+        "title": "Contact Me",
+        "des": "I am here to turn your visions into digital reality. With experience in software development and a creative approach, I am ready to tackle new challenges and create impactful solutions.",
+        "crip": "Let's connect and create something extraordinary together!",
+        "edu": "Technologist in Software Analysis and Development"
+    },
+
+    "questions": {
+        "ques1": "Do you want to give your business a technological twist?",
+        "ques2": "Are you looking for a technological change?",
+        "ques3": "Do you want to take your project to the next level?",
+        "ques4": "Do you need creative technological solutions?",
+        "ques5": "Are you ready to transform your vision into reality?",
+        "ques6": "Are you ready to innovate with technology?",
+        "ques7": "Are you ready to digitalize your business?"
+    },
+
+    "footer": {
+        "des": "From imagination to the screen, transforming ideas into digital solutions that make a difference.",
+        "dev": "Full Stack Developer",
+        "links": "Quick Links",
+        "pro": "Projects",
+        "skills": "Skills",
+        "aboutMe": "About me"
+}
 }
