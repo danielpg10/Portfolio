@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
+import { motion, AnimatePresence } from "framer-motion"
+import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa"
 import Image from "../../../assets/img/avatar - 06.png"
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"
 
 const TypewriterText = ({ text }) => {
   const [displayText, setDisplayText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
+
+  useEffect(() => {
+    setDisplayText("")
+    setIsTyping(true)
+  }, [])
 
   useEffect(() => {
     let timer
@@ -30,27 +35,36 @@ const TypewriterText = ({ text }) => {
 }
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation()
+  const [showInput, setShowInput] = useState(false)
+  const email = "danielpg2020md@gmail.com"
 
   const questions = [
-    t('questions.ques1'),
-    t('questions.ques2'),
-    t('questions.ques3'),
-    t('questions.ques4'),
-    t('questions.ques5'),
-    t('questions.ques6'),
-    t('questions.ques7'),
-  ];
+    t("questions.ques1"),
+    t("questions.ques2"),
+    t("questions.ques3"),
+    t("questions.ques4"),
+    t("questions.ques5"),
+    t("questions.ques6"),
+    t("questions.ques7"),
+  ]
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentQuestion((prev) => (prev + 1) % questions.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [questions]);
-  
+      setCurrentQuestion((prev) => (prev + 1) % questions.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [questions.length])
+
+  const handleButtonClick = () => {
+    setShowInput(true)
+  }
+
+  const handleSendCV = () => {
+    window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`
+  }
 
   return (
     <section
@@ -67,7 +81,7 @@ const Contact = () => {
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-center lg:text-left">
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-            {t('contact.title')}
+              {t("contact.title")}
             </span>
           </h2>
           <motion.h3
@@ -81,11 +95,56 @@ const Contact = () => {
             {questions[currentQuestion]}
           </motion.h3>
           <p className="text-lg md:text-xl font-fira-sans font-normal text-gray-300 mb-4 leading-relaxed text-center lg:text-left">
-          {t('contact.des')}
+            {t("contact.des")}
           </p>
           <div className="text-lg md:text-xl font-fira-sans font-normal text-gray-300 mb-8 leading-relaxed text-center lg:text-left">
-            <TypewriterText text={t('contact.crip')} />
+            <TypewriterText key={i18n.language} text={t("contact.crip")} />
           </div>
+          <AnimatePresence>
+            {!showInput ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="text-center lg:text-left"
+              >
+                <button
+                  onClick={() => setShowInput(true)}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+                >
+                  {t("contact.mail")}
+                </button>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-full max-w-md mx-auto lg:mx-0"
+              >
+                <div className="relative w-full group">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-full opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy blur-sm"></div>
+                  <div className="relative">
+                    <input
+                      type="email"
+                      value={email}
+                      readOnly
+                      className="w-full px-4 py-3 pr-12 rounded-full bg-black border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 text-white placeholder-gray-300 relative z-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleSendCV}
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:from-pink-700 hover:to-purple-700 hover:scale-110 z-20"
+                    >
+                      <FaPaperPlane className="text-white" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         <motion.div
@@ -152,9 +211,7 @@ const Contact = () => {
                       <h3 className="text-xl font-bold text-white text-center sm:text-left">
                         Marlon Daniel Portuguez Gomez
                       </h3>
-                      <p className="text-sm text-gray-300 text-center sm:text-left">
-                      {t('contact.edu')}
-                      </p>
+                      <p className="text-sm text-gray-300 text-center sm:text-left">{t("contact.edu")}</p>
                     </div>
                     <div className="flex flex-col space-y-2">
                       <a
@@ -183,9 +240,22 @@ const Contact = () => {
           </div>
         </motion.div>
       </div>
+      <style jsx>{`
+        @keyframes gradient-xy {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        .animate-gradient-xy {
+          animation: gradient-xy 3s ease infinite;
+          background-size: 400% 400%;
+        }
+      `}</style>
     </section>
   )
 }
 
 export default Contact
-

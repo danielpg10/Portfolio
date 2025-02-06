@@ -1,42 +1,31 @@
-import React, { useRef, useMemo } from 'react'
-import { useFrame } from '@react-three/fiber'
+import React, { useRef, useMemo, useCallback } from "react"
+import { useFrame } from "@react-three/fiber"
 
 const ParticleBackground = () => {
   const pointsRef = useRef()
 
-  const particles = useMemo(() => {
-    const temp = []
-    const count = 100
-    for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 10
-      const y = (Math.random() - 0.5) * 10
-      const z = (Math.random() - 0.5) * 10
-      temp.push({ x, y, z })
-    }
-    return temp
-  }, [])
+  const particleCount = useMemo(() => 50, []) // Reduced from 100 to 50
 
   const [positions, colors] = useMemo(() => {
-    const positions = new Float32Array(particles.length * 3)
-    const colors = new Float32Array(particles.length * 3)
+    const positions = new Float32Array(particleCount * 3)
+    const colors = new Float32Array(particleCount * 3)
 
-    particles.forEach((particle, i) => {
-      positions[i * 3] = particle.x
-      positions[i * 3 + 1] = particle.y
-      positions[i * 3 + 2] = particle.z
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 10
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 10
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 10
 
       colors[i * 3] = 0.6
       colors[i * 3 + 1] = 0.7
       colors[i * 3 + 2] = 1
-    })
+    }
 
     return [positions, colors]
-  }, [particles])
+  }, [particleCount])
 
-  useFrame((state) => {
+  const updateParticles = useCallback((time) => {
     if (!pointsRef.current) return
 
-    const time = state.clock.getElapsedTime()
     const positionArray = pointsRef.current.geometry.attributes.position.array
 
     for (let i = 0; i < positionArray.length; i += 3) {
@@ -44,34 +33,29 @@ const ParticleBackground = () => {
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true
-    pointsRef.current.rotation.y += 0.001
+    pointsRef.current.rotation.y += 0.0005 // Reduced rotation speed
+  }, [])
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime()
+    updateParticles(time)
   })
 
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particles.length}
-          array={positions}
-          itemSize={3}
-        />
-        <bufferAttribute
-          attach="attributes-color"
-          count={particles.length}
-          array={colors}
-          itemSize={3}
-        />
+        <bufferAttribute attach="attributes-position" count={particleCount} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-color" count={particleCount} array={colors} itemSize={3} />
       </bufferGeometry>
       <pointsMaterial
         size={0.05}
         vertexColors
         transparent
-        opacity={0.6}
+        opacity={0.4}
         sizeAttenuation={true}
       />
     </points>
   )
 }
 
-export default ParticleBackground
+export default React.memo(ParticleBackground)
